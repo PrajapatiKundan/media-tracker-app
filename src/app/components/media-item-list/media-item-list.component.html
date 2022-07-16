@@ -1,1 +1,14 @@
-<p>media-item-list works!</p>
+<header></header>
+
+<section>
+  <mw-media-item
+    *ngFor="let mediaItem of mediaItems"
+    [mediaItem]="mediaItem"
+  ></mw-media-item>
+</section>
+
+<footer>
+  <a routerLink="/add">
+    <img class="icon" src="assets/01.png" />
+  </a>
+</footer>
