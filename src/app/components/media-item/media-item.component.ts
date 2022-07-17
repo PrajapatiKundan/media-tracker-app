@@ -1,5 +1,5 @@
 import { MediaItem } from './../../models/media-item';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'mw-media-item',
@@ -10,11 +10,16 @@ export class MediaItemComponent implements OnInit {
   @Input()
   mediaItem!: MediaItem;
 
+  @Output()
+  delete = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {
     console.log(this.mediaItem);
   }
 
-  onDelete() {}
+  onDelete() {
+    this.delete.emit(this.mediaItem.id);
+  }
 }

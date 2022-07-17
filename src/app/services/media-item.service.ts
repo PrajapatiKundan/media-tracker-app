@@ -57,4 +57,11 @@ export class MediaItemService {
   getMediaItems(): MediaItem[] {
     return this.mediaItems;
   }
+
+  removeMediaItem(id: number): MediaItem[] {
+    this.mediaItems = this.mediaItems.filter(
+      (mediaItem) => mediaItem.id !== id
+    );
+    return this.mediaItems;
+  }
 }

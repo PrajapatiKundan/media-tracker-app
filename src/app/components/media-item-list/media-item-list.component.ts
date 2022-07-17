@@ -15,4 +15,9 @@ export class MediaItemListComponent implements OnInit {
   ngOnInit(): void {
     this.mediaItems = this.mediaItemService.getMediaItems();
   }
+
+  onRemoveMediaItem(id: number) {
+    this.mediaItems = this.mediaItemService.removeMediaItem(id);
+    console.log('mediaItemList', this.mediaItems);
+  }
 }
