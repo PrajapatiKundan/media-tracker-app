@@ -7,6 +7,7 @@ import { MediaItemListComponent } from './components/media-item-list/media-item-
 import { MediaItemComponent } from './components/media-item/media-item.component';
 import { CategoryListPipe } from './pipes/category-list.pipe';
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { FavoriteDirective } from './directives/favorite.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CategoryListComponent } from './components/category-list/category-list.
     MediaItemListComponent,
     MediaItemComponent,
     CategoryListPipe,
-    CategoryListComponent
+    CategoryListComponent,
+    FavoriteDirective
   ],
   imports: [
     BrowserModule,

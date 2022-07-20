@@ -15,9 +15,7 @@ export class MediaItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.mediaItem);
-  }
+  ngOnInit(): void {}
 
   onDelete() {
     this.delete.emit(this.mediaItem.id);

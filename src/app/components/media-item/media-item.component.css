@@ -36,6 +36,7 @@ h2 {
   height: 24px;
   fill: #bdc2c5;
   cursor: pointer;
+  font-size: 23px;
 }
 .favorite.is-favorite {
   fill: #37ad79;
