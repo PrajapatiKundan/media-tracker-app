@@ -31,7 +31,7 @@ export class MediaItemService {
       category: 'Action',
       year: 2016,
       watchedOn: null,
-      isFavorite: false,
+      isFavorite: true,
     },
     {
       id: 4,

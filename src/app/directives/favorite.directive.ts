@@ -1,11 +1,26 @@
-import { Directive, ElementRef } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+} from '@angular/core';
 
 @Directive({
   selector: '[mwFavorite]',
 })
 export class FavoriteDirective {
-  constructor(private elementRef: ElementRef) {
-    console.log(elementRef);
-    this.elementRef.nativeElement.style.backgroundColor = 'yellow';
+  @Input('mwFavorite')
+  isFavorite!: boolean;
+
+  @HostBinding('title')
+  title: string = '';
+
+  @HostListener('mouseenter') onMouseEnter() {
+    if (this.isFavorite) {
+      this.title = 'Remove from favorite';
+    } else {
+      this.title = 'Add to favorite';
+    }
   }
 }

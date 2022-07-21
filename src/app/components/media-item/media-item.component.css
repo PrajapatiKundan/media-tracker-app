@@ -39,14 +39,14 @@ h2 {
   font-size: 23px;
 }
 .favorite.is-favorite {
-  fill: #37ad79;
+  color: #ec4342;
 }
-.favorite.is-favorite-hovering {
+/* .favorite.is-favorite-hovering {
   fill: #45bf94;
 }
 .favorite.is-favorite.is-favorite-hovering {
   fill: #ec4342;
-}
+} */
 .delete {
   display: block;
   background-color: #ec4342;
