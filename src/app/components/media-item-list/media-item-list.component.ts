@@ -20,4 +20,10 @@ export class MediaItemListComponent implements OnInit {
     this.mediaItems = this.mediaItemService.removeMediaItem(id);
     console.log('mediaItemList', this.mediaItems);
   }
+
+  onToggleFavorite(payload: { id: number; isFavorite: boolean }) {
+    this.mediaItems = this.mediaItemService.updateMediaItem(payload.id, {
+      isFavorite: payload.isFavorite,
+    });
+  }
 }

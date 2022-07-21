@@ -13,11 +13,21 @@ export class MediaItemComponent implements OnInit {
   @Output()
   delete = new EventEmitter();
 
+  @Output()
+  favorite = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
 
   onDelete() {
     this.delete.emit(this.mediaItem.id);
+  }
+
+  onFavorite() {
+    this.favorite.emit({
+      id: this.mediaItem.id,
+      isFavorite: !this.mediaItem.isFavorite,
+    });
   }
 }

@@ -19,6 +19,7 @@
     class="fa fa-heart favorite"
     [mwFavorite]="mediaItem.isFavorite"
     [class.is-favorite]="mediaItem.isFavorite"
+    (click)="onFavorite()"
   ></i>
   <a class="delete" (click)="onDelete()"> remove </a>
   <a class="details"> watch </a>

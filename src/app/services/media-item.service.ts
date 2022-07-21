@@ -64,4 +64,17 @@ export class MediaItemService {
     );
     return this.mediaItems;
   }
+
+  updateMediaItem(id: number, payload: Partial<MediaItem>): MediaItem[] {
+    this.mediaItems = this.mediaItems.map((mediaItem) => {
+      if (mediaItem.id === id) {
+        return {
+          ...mediaItem,
+          ...payload,
+        };
+      }
+      return mediaItem;
+    });
+    return this.mediaItems;
+  }
 }

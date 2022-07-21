@@ -10,6 +10,7 @@
     *ngFor="let mediaItem of mediaItems"
     [mediaItem]="mediaItem"
     (delete)="onRemoveMediaItem($event)"
+    (favorite)="onToggleFavorite($event)"
   ></mw-media-item>
 </section>
 

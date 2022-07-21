@@ -1,5 +1,5 @@
 export interface MediaItem {
-  id: number;
+  readonly id: number;
   name: string;
   medium: string;
   category: string;
