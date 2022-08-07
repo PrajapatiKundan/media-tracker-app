@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { mediaItemYearValidate } from 'src/app/shared/mediaItemYear.validator';
 
 @Component({
   selector: 'mw-media-item-form',
@@ -14,10 +15,14 @@ export class MediaItemFormComponent implements OnInit {
   ngOnInit(): void {
     this.mediaItemForm = this.fb.group({
       medium: ['Movies'],
-      name: [''],
+      name: ['', [Validators.required]],
       category: ['Action'],
-      year: [''],
+      year: ['', [mediaItemYearValidate]],
     });
+  }
+
+  get year() {
+    return this.mediaItemForm.get('year');
   }
 
   onSubmit(mediaItem: any) {
