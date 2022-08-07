@@ -77,4 +77,10 @@ export class MediaItemService {
     });
     return this.mediaItems;
   }
+
+  addMediaItem(mediaItem: MediaItem): void {
+    console.log('mediaItem: ', mediaItem);
+    this.mediaItems.push(mediaItem);
+    console.log('mediaItems: ', this.mediaItems);
+  }
 }
