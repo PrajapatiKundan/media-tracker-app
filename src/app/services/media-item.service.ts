@@ -75,16 +75,23 @@ export class MediaItemService {
     return this.http.delete(`mediaitems/${id}`);
   }
 
-  updateMediaItem(id: number, payload: Partial<MediaItem>): MediaItem[] {
-    this.mediaItems = this.mediaItems.map((mediaItem) => {
-      if (mediaItem.id === id) {
-        return {
-          ...mediaItem,
-          ...payload,
-        };
-      }
-      return mediaItem;
-    });
-    return this.mediaItems;
+  putRequest(id: number, payload: Partial<MediaItem>) {
+    // this.mediaItems = this.mediaItems.map((mediaItem) => {
+    //   if (mediaItem.id === id) {
+    //     return {
+    //       ...mediaItem,
+    //       ...payload,
+    //     };
+    //   }
+    //   return mediaItem;
+    // });
+    // return this.mediaItems;
+    const reqBody = {
+      id,
+      payload: {
+        ...payload,
+      },
+    };
+    return this.http.put('mediaitems', reqBody);
   }
 }

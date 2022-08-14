@@ -47,8 +47,12 @@ export class MediaItemListComponent implements OnInit {
   }
 
   onToggleFavorite(payload: { id: number; isFavorite: boolean }) {
-    this.mediaItems = this.mediaItemService.updateMediaItem(payload.id, {
-      isFavorite: payload.isFavorite,
-    });
+    this.mediaItemService
+      .putRequest(payload.id, {
+        isFavorite: payload.isFavorite,
+      })
+      .subscribe(() => {
+        this.getMediaItems();
+      });
   }
 }
