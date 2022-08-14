@@ -56,7 +56,7 @@ export class MediaItemService {
   ];
   constructor(private http: HttpClient) {}
 
-  getMediaItems(medium: string): Observable<MediaItem[]> {
+  getRequest(medium: string): Observable<MediaItem[]> {
     // Here get method will return object which contains property mediaItem of type MediaItem[]
     return this.http
       .get<{ mediaItems: MediaItem[] }>('mediaitems', { params: { medium } })
@@ -67,15 +67,12 @@ export class MediaItemService {
       );
   }
 
-  addMediaItem(mediaItem: MediaItem): Observable<MediaItem> {
+  postRequest(mediaItem: MediaItem): Observable<MediaItem> {
     return this.http.post<MediaItem>('mediaitems', mediaItem);
   }
 
-  removeMediaItem(id: number): MediaItem[] {
-    this.mediaItems = this.mediaItems.filter(
-      (mediaItem) => mediaItem.id !== id
-    );
-    return this.mediaItems;
+  deleteRequest(id: number) {
+    return this.http.delete(`mediaitems/${id}`);
   }
 
   updateMediaItem(id: number, payload: Partial<MediaItem>): MediaItem[] {

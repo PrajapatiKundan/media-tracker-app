@@ -27,19 +27,23 @@ export class MediaItemListComponent implements OnInit {
         } else {
           this.medium = medium;
         }
-
-        this.mediaItemService
-          .getMediaItems(this.medium)
-          .subscribe((mediaItems: MediaItem[]) => {
-            this.mediaItems = mediaItems;
-          });
+        this.getMediaItems();
       }
     });
   }
 
+  getMediaItems() {
+    this.mediaItemService
+      .getRequest(this.medium)
+      .subscribe((mediaItems: MediaItem[]) => {
+        this.mediaItems = mediaItems;
+      });
+  }
+
   onRemoveMediaItem(id: number) {
-    this.mediaItems = this.mediaItemService.removeMediaItem(id);
-    console.log('mediaItemList', this.mediaItems);
+    this.mediaItemService.deleteRequest(id).subscribe(() => {
+      this.getMediaItems();
+    });
   }
 
   onToggleFavorite(payload: { id: number; isFavorite: boolean }) {
