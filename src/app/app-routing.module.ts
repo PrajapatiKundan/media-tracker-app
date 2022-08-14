@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./new-item/new-item.module').then((m) => m.NewItemModule),
   },
-  { path: 'all', component: MediaItemListComponent },
+  { path: ':medium', component: MediaItemListComponent },
   { path: '', pathMatch: 'full', redirectTo: 'all' },
 ];
 

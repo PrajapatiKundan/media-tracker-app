@@ -1,6 +1,7 @@
 import { MediaItemService } from './../../services/media-item.service';
 import { Component, OnInit } from '@angular/core';
 import { MediaItem } from 'src/app/models/media-item';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'mw-media-item-list',
@@ -9,11 +10,26 @@ import { MediaItem } from 'src/app/models/media-item';
 })
 export class MediaItemListComponent implements OnInit {
   mediaItems: MediaItem[] = [];
+  medium: string = '';
 
-  constructor(private mediaItemService: MediaItemService) {}
+  constructor(
+    private mediaItemService: MediaItemService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.mediaItems = this.mediaItemService.getMediaItems();
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const medium = params.get('medium');
+
+      if (medium) {
+        if (medium?.toLowerCase() === 'all') {
+          this.medium = '';
+        } else {
+          this.medium = medium;
+        }
+      }
+    });
   }
 
   onRemoveMediaItem(id: number) {
