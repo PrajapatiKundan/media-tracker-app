@@ -8,7 +8,7 @@ import { MediaItemComponent } from './components/media-item/media-item.component
 import { CategoryListPipe } from './pipes/category-list.pipe';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { FavoriteDirective } from './directives/favorite.directive';
-import { HttpXhrBackend } from '@angular/common/http';
+import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 import { MockXHRBackend } from './mock-xhr-backend';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { MockXHRBackend } from './mock-xhr-backend';
     CategoryListComponent,
     FavoriteDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [{ provide: HttpXhrBackend, useClass: MockXHRBackend }],
   bootstrap: [AppComponent],
 })

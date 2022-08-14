@@ -18,7 +18,6 @@ export class MediaItemListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.mediaItems = this.mediaItemService.getMediaItems();
     this.route.paramMap.subscribe((params: ParamMap) => {
       const medium = params.get('medium');
 
@@ -28,6 +27,12 @@ export class MediaItemListComponent implements OnInit {
         } else {
           this.medium = medium;
         }
+
+        this.mediaItemService
+          .getMediaItems(this.medium)
+          .subscribe((mediaItems: MediaItem[]) => {
+            this.mediaItems = mediaItems;
+          });
       }
     });
   }

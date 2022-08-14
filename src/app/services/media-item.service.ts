@@ -1,5 +1,7 @@
+import { map, Observable } from 'rxjs';
 import { MediaItem } from './../models/media-item';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -52,10 +54,17 @@ export class MediaItemService {
       isFavorite: false,
     },
   ];
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getMediaItems(): MediaItem[] {
-    return this.mediaItems;
+  getMediaItems(medium: string): Observable<MediaItem[]> {
+    // Here get method will return object which contains property mediaItem of type MediaItem[]
+    return this.http
+      .get<{ mediaItems: MediaItem[] }>('mediaitems', { params: { medium } })
+      .pipe(
+        map((response) => {
+          return response.mediaItems;
+        })
+      );
   }
 
   removeMediaItem(id: number): MediaItem[] {
