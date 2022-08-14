@@ -8,6 +8,8 @@ import { MediaItemComponent } from './components/media-item/media-item.component
 import { CategoryListPipe } from './pipes/category-list.pipe';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { FavoriteDirective } from './directives/favorite.directive';
+import { HttpXhrBackend } from '@angular/common/http';
+import { MockXHRBackend } from './mock-xhr-backend';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,10 @@ import { FavoriteDirective } from './directives/favorite.directive';
     MediaItemComponent,
     CategoryListPipe,
     CategoryListComponent,
-    FavoriteDirective
+    FavoriteDirective,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [{ provide: HttpXhrBackend, useClass: MockXHRBackend }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
