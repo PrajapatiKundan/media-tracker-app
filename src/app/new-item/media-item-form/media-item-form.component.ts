@@ -33,10 +33,7 @@ export class MediaItemFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const mediaItem: MediaItem = {
-      id: this.mediaItemService.mediaItems.length + 1,
-      ...this.mediaItemForm.value,
-    };
+    const mediaItem: MediaItem = { ...this.mediaItemForm.value };
     this.mediaItemService.postRequest(mediaItem).subscribe(() => {
       this.router.navigate(['/', mediaItem.medium]);
     });
