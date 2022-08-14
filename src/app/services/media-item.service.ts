@@ -67,6 +67,10 @@ export class MediaItemService {
       );
   }
 
+  addMediaItem(mediaItem: MediaItem): Observable<MediaItem> {
+    return this.http.post<MediaItem>('mediaitems', mediaItem);
+  }
+
   removeMediaItem(id: number): MediaItem[] {
     this.mediaItems = this.mediaItems.filter(
       (mediaItem) => mediaItem.id !== id
@@ -85,11 +89,5 @@ export class MediaItemService {
       return mediaItem;
     });
     return this.mediaItems;
-  }
-
-  addMediaItem(mediaItem: MediaItem): void {
-    console.log('mediaItem: ', mediaItem);
-    this.mediaItems.push(mediaItem);
-    console.log('mediaItems: ', this.mediaItems);
   }
 }

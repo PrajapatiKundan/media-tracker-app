@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mediaItemYearValidate } from 'src/app/shared/mediaItemYear.validator';
 import { MediaItem } from 'src/app/models/media-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mw-media-item-form',
@@ -14,7 +15,8 @@ export class MediaItemFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private mediaItemService: MediaItemService
+    private mediaItemService: MediaItemService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,8 @@ export class MediaItemFormComponent implements OnInit {
       id: this.mediaItemService.mediaItems.length + 1,
       ...this.mediaItemForm.value,
     };
-    this.mediaItemService.addMediaItem(mediaItem);
+    this.mediaItemService.addMediaItem(mediaItem).subscribe(() => {
+      this.router.navigate(['/', mediaItem.medium]);
+    });
   }
 }
