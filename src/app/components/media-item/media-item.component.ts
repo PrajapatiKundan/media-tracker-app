@@ -10,6 +10,9 @@ export class MediaItemComponent implements OnInit {
   @Input()
   mediaItem!: MediaItem;
 
+  @Input()
+  searchText: string = '';
+
   @Output()
   delete = new EventEmitter();
 

@@ -13,6 +13,7 @@ export class FilterPipe implements PipeTransform {
       return mediaItems;
     }
     searchText = searchText.toLowerCase();
+    console.log('searchText: ', searchText);
     return mediaItems.filter((mediaItem: MediaItem) => {
       return mediaItem.name.toLowerCase().includes(searchText);
     });

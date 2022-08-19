@@ -56,10 +56,10 @@ h2 {
   color: #ffffff;
   cursor: pointer;
 }
-.details {
+.edit {
   display: block;
   background-color: #37ad79;
-  padding: 4px;
+  padding: 4px 12px;
   font-size: 0.8em;
   border-radius: 4px;
   color: #ffffff;

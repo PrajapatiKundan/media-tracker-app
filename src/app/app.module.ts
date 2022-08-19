@@ -11,7 +11,8 @@ import { FavoriteDirective } from './directives/favorite.directive';
 import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 import { MockXHRBackend } from './mock-xhr-backend';
 import { FilterPipe } from './pipes/filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,14 @@ import { FormsModule } from '@angular/forms';
     CategoryListComponent,
     FavoriteDirective,
     FilterPipe,
+    HighlightPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [{ provide: HttpXhrBackend, useClass: MockXHRBackend }],
   bootstrap: [AppComponent],
 })

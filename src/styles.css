@@ -94,3 +94,6 @@ body {
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 }
+.highlight-text {
+  background-color: #02383c;
+}
