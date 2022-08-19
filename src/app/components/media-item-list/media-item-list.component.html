@@ -1,4 +1,10 @@
 <header>
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    placeholder="Search..."
+    class="search"
+  />
   <mw-category-list
     *ngIf="mediaItems"
     [categories]="mediaItems | categoryList"
@@ -7,7 +13,7 @@
 
 <section>
   <mw-media-item
-    *ngFor="let mediaItem of mediaItems"
+    *ngFor="let mediaItem of mediaItems | filter: searchText"
     [mediaItem]="mediaItem"
     (delete)="onRemoveMediaItem($event)"
     (favorite)="onToggleFavorite($event)"

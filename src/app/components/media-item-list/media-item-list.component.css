@@ -2,7 +2,7 @@
   display: flex;
   height: calc(100% - 95px);
   flex-direction: column;
-  padding: 10px;
+  padding: 0px 10px 10px;
 }
 header {
   color: #c6c5c3;
@@ -34,4 +34,15 @@ footer {
 footer .icon {
   width: 64px;
   height: 64px;
+}
+.search {
+  background-color: #29394b;
+  color: #c6c5c3;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+  border-color: #53ace4;
+  padding: 6px;
+  width: 290px;
 }

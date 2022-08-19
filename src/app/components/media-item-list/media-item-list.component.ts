@@ -11,6 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class MediaItemListComponent implements OnInit {
   mediaItems: MediaItem[] = [];
   medium: string = '';
+  searchText: string = '';
 
   constructor(
     private mediaItemService: MediaItemService,

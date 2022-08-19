@@ -10,6 +10,8 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { FavoriteDirective } from './directives/favorite.directive';
 import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 import { MockXHRBackend } from './mock-xhr-backend';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,9 @@ import { MockXHRBackend } from './mock-xhr-backend';
     CategoryListPipe,
     CategoryListComponent,
     FavoriteDirective,
+    FilterPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: HttpXhrBackend, useClass: MockXHRBackend }],
   bootstrap: [AppComponent],
 })
