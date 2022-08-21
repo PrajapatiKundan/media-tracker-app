@@ -1,6 +1,6 @@
 <h2 [innerHtml]="mediaItem.name | highlight: searchText"></h2>
 <div *ngIf="mediaItem.watchedOn">
-  Watched on {{ mediaItem.watchedOn | date: "shortDate" }}
+  Watched on {{ mediaItem.watchedOn | date: "dd/MM/yyyy" }}
 </div>
 <div>{{ mediaItem.category }}</div>
 <div>{{ mediaItem.year }}</div>

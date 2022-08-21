@@ -42,7 +42,7 @@
       </td>
     </tr>
     <tr>
-      <td><label for="year">Year</label></td>
+      <td><label for="year">Release year</label></td>
       <td>
         <input
           type="text"
@@ -56,6 +56,10 @@
         Year must be between {{ year?.getError("invalidYear").minYear }} and
         {{ year?.getError("invalidYear").maxYear }}
       </td>
+    </tr>
+    <tr>
+      <td><label for="watchedOn">Watched on</label></td>
+      <td><input type="date" formControlName="watchedOn" id="watchedOn" /></td>
     </tr>
   </table>
   <button type="submit" [disabled]="mediaItemForm.invalid">Save</button>

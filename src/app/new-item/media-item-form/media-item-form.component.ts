@@ -20,11 +20,14 @@ export class MediaItemFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    let today = new Date();
+    console.log('today: ', today);
     this.mediaItemForm = this.fb.group({
       medium: ['Movies'],
       name: ['', [Validators.required]],
       category: ['Action'],
       year: ['', [mediaItemYearValidate]],
+      watchedOn: [today],
     });
   }
 
