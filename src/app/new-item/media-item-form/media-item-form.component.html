@@ -18,15 +18,15 @@
       <td>
         <input type="text" formControlName="name" id="name" />
       </td>
-      <td
-        *ngIf="
-          mediaItemForm.get('name')?.touched &&
-          mediaItemForm.get('name')?.invalid
-        "
-        class="error"
-      >
-        Invalid name
-      </td>
+    </tr>
+    <tr
+      *ngIf="
+        mediaItemForm.get('name')?.touched && mediaItemForm.get('name')?.invalid
+      "
+      class="error"
+    >
+      <td></td>
+      <td>Invalid name</td>
     </tr>
     <tr>
       <td><label for="category">Category</label></td>
@@ -52,7 +52,10 @@
           minlength="4"
         />
       </td>
-      <td *ngIf="year?.touched && year?.invalid" class="error">
+    </tr>
+    <tr *ngIf="year?.touched && year?.invalid" class="error">
+      <td></td>
+      <td>
         Year must be between {{ year?.getError("invalidYear").minYear }} and
         {{ year?.getError("invalidYear").maxYear }}
       </td>

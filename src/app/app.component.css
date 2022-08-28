@@ -25,3 +25,7 @@ section > header > h1 {
 section > header .description {
   font-style: italic;
 }
+.plus-icon {
+  background-color: #37ad79;
+  border-radius: 100%;
+}

@@ -30,6 +30,7 @@ export class EditModalComponent implements OnInit {
       name: [this.mediaItem.name, [Validators.required]],
       category: [this.mediaItem.category],
       year: [this.mediaItem.year, [mediaItemYearValidate]],
+      watchedOn: [this.mediaItem.watchedOn],
     });
   }
 

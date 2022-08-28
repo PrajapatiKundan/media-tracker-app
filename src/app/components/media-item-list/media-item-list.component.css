@@ -28,13 +28,13 @@ section {
 section > media-item {
   margin: 10px;
 }
-footer {
+/* footer {
   text-align: right;
 }
 footer .icon {
   width: 64px;
   height: 64px;
-}
+} */
 .search {
   background-color: #29394b;
   color: #c6c5c3;
