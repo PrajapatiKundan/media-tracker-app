@@ -3,10 +3,6 @@ import { AbstractControl } from '@angular/forms';
 export function mediaItemYearValidate(
   control: AbstractControl
 ): { [key: string]: any } | null {
-  if (control.value.trim().length === 0) {
-    return null;
-  }
-
   const year = parseInt(control.value, 10); // Here 10 indicate decimal number. default is 0x for hexadecimal value
   const minYear = 1900;
   const maxYear = new Date().getFullYear();

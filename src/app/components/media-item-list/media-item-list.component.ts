@@ -1,9 +1,16 @@
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { ModalPlaceholderDirective } from './../../directives/modal-placeholder.directive';
+import { EditModalComponent } from './../edit-modal/edit-modal.component';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Subscribable,
+  Subscription,
+} from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { MediaItemService } from './../../services/media-item.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MediaItem } from 'src/app/models/media-item';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'mw-media-item-list',
@@ -15,10 +22,15 @@ export class MediaItemListComponent implements OnInit {
   medium: string = '';
   searchControl = new FormControl();
   searchText: string = '';
+  closeSubscription!: Subscription;
+
+  @ViewChild(ModalPlaceholderDirective) vc!: ModalPlaceholderDirective;
 
   constructor(
     private mediaItemService: MediaItemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private viewContainerRef: ViewContainerRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,5 +75,19 @@ export class MediaItemListComponent implements OnInit {
       .subscribe(() => {
         this.getMediaItems();
       });
+  }
+
+  onEditMediaItem(mediaItem: MediaItem) {
+    this.vc.viewContainerRef.clear();
+    const editModalComponentRef =
+      this.vc.viewContainerRef.createComponent(EditModalComponent);
+    editModalComponentRef.instance.mediaItem = mediaItem;
+    this.closeSubscription = editModalComponentRef.instance.close.subscribe(
+      () => {
+        this.getMediaItems();
+        this.closeSubscription.unsubscribe();
+        this.vc.viewContainerRef.clear();
+      }
+    );
   }
 }

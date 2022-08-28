@@ -1,0 +1,72 @@
+.modal-container {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-card {
+  display: block;
+  padding: 20px;
+  background-color: black;
+  width: 320px;
+  margin: 80px auto;
+  border-radius: 5px;
+  position: relative;
+}
+header,
+label {
+  color: #53ace4;
+}
+input,
+select {
+  background-color: #29394b;
+  color: #c6c5c3;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+  border-color: #53ace4;
+  padding: 6px;
+}
+.error {
+  color: #d93a3e;
+}
+td {
+  padding: 10px 10px 10px 0px;
+}
+button[type="submit"] {
+  background-color: #45bf94;
+  border: 0;
+  padding: 5px 12px;
+  font-size: 1em;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+}
+button[type="submit"]:disabled {
+  background-color: #333;
+  color: #666;
+  cursor: default;
+}
+h2 {
+  display: inline;
+}
+.close-btn {
+  float: right;
+  background-color: #ec4342;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  border-radius: 100%;
+  line-height: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}

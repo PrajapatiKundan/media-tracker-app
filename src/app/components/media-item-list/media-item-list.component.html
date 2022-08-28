@@ -18,6 +18,7 @@
     [searchText]="searchText"
     (delete)="onRemoveMediaItem($event)"
     (favorite)="onToggleFavorite($event)"
+    (edit)="onEditMediaItem($event)"
   ></mw-media-item>
 </section>
 
@@ -26,3 +27,5 @@
     <img class="icon" src="assets/01.png" />
   </a>
 </footer>
+
+<ng-template mwModalPlaceholder></ng-template>

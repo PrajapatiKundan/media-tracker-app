@@ -19,6 +19,9 @@ export class MediaItemComponent implements OnInit {
   @Output()
   favorite = new EventEmitter();
 
+  @Output()
+  edit = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -32,5 +35,9 @@ export class MediaItemComponent implements OnInit {
       id: this.mediaItem.id,
       isFavorite: !this.mediaItem.isFavorite,
     });
+  }
+
+  onEdit() {
+    this.edit.emit(this.mediaItem);
   }
 }

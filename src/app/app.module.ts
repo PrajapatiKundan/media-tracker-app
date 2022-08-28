@@ -1,3 +1,4 @@
+import { ModalPlaceholderDirective } from './directives/modal-placeholder.directive';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,8 +12,9 @@ import { FavoriteDirective } from './directives/favorite.directive';
 import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
 import { MockXHRBackend } from './mock-xhr-backend';
 import { FilterPipe } from './pipes/filter.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HighlightPipe } from './pipes/highlight.pipe';
+import { EditModalComponent } from './components/edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HighlightPipe } from './pipes/highlight.pipe';
     FavoriteDirective,
     FilterPipe,
     HighlightPipe,
+    EditModalComponent,
+    ModalPlaceholderDirective,
   ],
   imports: [
     BrowserModule,
