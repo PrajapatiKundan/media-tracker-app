@@ -1,11 +1,6 @@
 import { ModalPlaceholderDirective } from './../../directives/modal-placeholder.directive';
 import { EditModalComponent } from './../edit-modal/edit-modal.component';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  Subscribable,
-  Subscription,
-} from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { MediaItemService } from './../../services/media-item.service';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
