@@ -27,3 +27,7 @@ I have included some additional features.
 2. To run the project run:
 
    `npm start`
+
+## Project preview
+
+![MediaTrackerApp project preview](./src/assets/MediaTrackerAppPreview.png)
