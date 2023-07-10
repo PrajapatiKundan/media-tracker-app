@@ -6,6 +6,8 @@ import { MediaItemService } from './../../services/media-item.service';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MediaItem } from 'src/app/models/media-item';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ServerMediaItemToMediaItem } from 'src/app/shared/model-mapping';
+import { ServerMediaItem } from 'src/app/models/server-media-item';
 
 @Component({
   selector: 'mw-media-item-list',
@@ -51,8 +53,10 @@ export class MediaItemListComponent implements OnInit {
   getMediaItems() {
     this.mediaItemService
       .getRequest(this.medium)
-      .subscribe((mediaItems: MediaItem[]) => {
-        this.mediaItems = mediaItems;
+      .subscribe((serverMediaItems: ServerMediaItem[]) => {
+        serverMediaItems.forEach(serverMediaItem => {
+          this.mediaItems.push(ServerMediaItemToMediaItem(serverMediaItem))  
+        });
       });
   }
 
