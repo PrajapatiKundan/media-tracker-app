@@ -7,15 +7,18 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root',
 })
 export class MediaItemService {
+  private ROOT_URL: string = 'http://localhost:8080/media-tracker';
+
   constructor(private http: HttpClient) {}
 
   getRequest(medium: string) {
     // Here get method will return object which contains property mediaItem of type MediaItem[]
     return this.http
-      .get<{ mediaItems: MediaItem[] }>('mediaitems', { params: { medium } })
+      .get<MediaItem[]>(`${this.ROOT_URL}/mediaitems`)
       .pipe(
         map((response) => {
-          return response.mediaItems;
+          console.log("Response: ", response)
+          return response;
         }),
         catchError(this.errorHandler)
       );

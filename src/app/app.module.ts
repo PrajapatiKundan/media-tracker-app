@@ -35,7 +35,7 @@ import { EditModalComponent } from './components/edit-modal/edit-modal.component
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: HttpXhrBackend, useClass: MockXHRBackend }],
+providers: [/*{ provide: HttpXhrBackend, useClass: MockXHRBackend }*/],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
