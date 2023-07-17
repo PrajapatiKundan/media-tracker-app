@@ -34,7 +34,7 @@ export class MediaItemService {
 
   deleteRequest(id: number) {
     return this.http
-      .delete(`mediaitems/${id}`)
+      .delete(`${this.ROOT_URL}/mediaitems/delete/${id}`)
       .pipe(catchError(this.errorHandler));
   }
 

@@ -62,7 +62,8 @@ export class MediaItemListComponent implements OnInit {
 
   onRemoveMediaItem(id: number) {
     this.mediaItemService.deleteRequest(id).subscribe(() => {
-      this.getMediaItems();
+      this.mediaItems = this.mediaItems.filter((mediaItem: MediaItem) => mediaItem.id != id);
+      // this.getMediaItems();
     });
   }
 
