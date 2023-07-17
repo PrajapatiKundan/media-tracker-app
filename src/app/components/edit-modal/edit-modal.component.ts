@@ -39,9 +39,10 @@ export class EditModalComponent implements OnInit {
   }
 
   onSubmit() {
-    const mediaItem: MediaItem = { ...this.mediaItemForm.value };
+    const mediaItem: MediaItem = { ...this.mediaItem, ...this.mediaItemForm.value };
+    console.log("edit data: ", mediaItem)
     this.mediaItemService
-      .putRequest(this.mediaItem.id, { ...mediaItem })
+      .putRequest(mediaItem)
       .subscribe(() => {
         this.onClose();
       });

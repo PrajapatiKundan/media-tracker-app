@@ -38,13 +38,9 @@ export class MediaItemService {
       .pipe(catchError(this.errorHandler));
   }
 
-  putRequest(id: number, payload: Partial<MediaItem>) {
-    const reqBody = {
-      id,
-      payload: { ...payload },
-    };
+  putRequest(mediaItem: MediaItem) {
     return this.http
-      .put('mediaitems', reqBody)
+      .put(`${this.ROOT_URL}/mediaitems/update`, MediaItemToServerMediaItem(mediaItem))
       .pipe(catchError(this.errorHandler));
   }
 

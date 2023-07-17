@@ -31,10 +31,8 @@ export class MediaItemComponent implements OnInit {
   }
 
   onFavorite() {
-    this.favorite.emit({
-      id: this.mediaItem.id,
-      isFavorite: !this.mediaItem.isFavorite,
-    });
+    const mediaItem: MediaItem = { ...this.mediaItem, isFavorite: !this.mediaItem.isFavorite }
+    this.favorite.emit(mediaItem);
   }
 
   onEdit() {

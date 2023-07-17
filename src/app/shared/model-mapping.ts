@@ -1,5 +1,6 @@
 import { ServerMediaItem } from './../models/server-media-item';
 import { MediaItem } from './../models/media-item';
+
 export function MediaItemToServerMediaItem(mediaItem: MediaItem): ServerMediaItem {
     let serverMediaItem: ServerMediaItem = {
         id: mediaItem.id,
