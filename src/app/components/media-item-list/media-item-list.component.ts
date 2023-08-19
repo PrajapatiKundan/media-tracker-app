@@ -1,6 +1,6 @@
 import { ModalPlaceholderDirective } from './../../directives/modal-placeholder.directive';
 import { EditModalComponent } from './../edit-modal/edit-modal.component';
-import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { MediaItemService } from './../../services/media-item.service';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
@@ -63,15 +63,20 @@ export class MediaItemListComponent implements OnInit {
   onRemoveMediaItem(id: number) {
     this.mediaItemService.deleteRequest(id).subscribe(() => {
       this.mediaItems = this.mediaItems.filter((mediaItem: MediaItem) => mediaItem.id != id);
-      // this.getMediaItems();
     });
   }
 
   onToggleFavorite(mediaItem: MediaItem) {
+    const id = mediaItem.id;
     this.mediaItemService
       .putRequest(mediaItem)
       .subscribe(() => {
-        this.getMediaItems();
+        this.mediaItems = this.mediaItems.map((element: MediaItem) => {
+          if (element.id === id) {
+            return mediaItem;
+          }
+          return element;
+        })
       });
   }
 
@@ -82,7 +87,20 @@ export class MediaItemListComponent implements OnInit {
     editModalComponentRef.instance.mediaItem = mediaItem;
     this.closeSubscription = editModalComponentRef.instance.close.subscribe(
       () => {
-        this.getMediaItems();
+        this.closeSubscription.unsubscribe();
+        this.vc.viewContainerRef.clear();
+      }
+    );
+
+    editModalComponentRef.instance.save.pipe(
+      map((mediaItem: MediaItem) => {
+        let index = this.mediaItems.findIndex(item => item.id == mediaItem.id);
+        if (index) {
+          this.mediaItems[index] = mediaItem;
+        }
+      })
+    )
+    .subscribe(() => {
         this.closeSubscription.unsubscribe();
         this.vc.viewContainerRef.clear();
       }

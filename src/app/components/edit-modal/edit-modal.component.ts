@@ -1,8 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MediaItem } from 'src/app/models/media-item';
+import { ServerMediaItem } from 'src/app/models/server-media-item';
 import { MediaItemService } from 'src/app/services/media-item.service';
 import { mediaItemYearValidate } from 'src/app/shared/mediaItemYear.validator';
+import { ServerMediaItemToMediaItem } from 'src/app/shared/model-mapping';
 
 @Component({
   selector: 'mw-edit-modal',
@@ -15,6 +17,9 @@ export class EditModalComponent implements OnInit {
 
   @Output()
   close = new EventEmitter();
+
+  @Output()
+  save = new EventEmitter();
 
   mediaItemForm!: FormGroup;
   display: boolean = false;
@@ -43,8 +48,9 @@ export class EditModalComponent implements OnInit {
     console.log("edit data: ", mediaItem)
     this.mediaItemService
       .putRequest(mediaItem)
-      .subscribe(() => {
-        this.onClose();
+      .subscribe((serverMediaItem: ServerMediaItem) => {
+
+        this.onSave(ServerMediaItemToMediaItem(serverMediaItem));
       });
   }
 
@@ -54,5 +60,9 @@ export class EditModalComponent implements OnInit {
 
   onClose() {
     this.close.emit();
+  }
+
+  onSave(mediItem: MediaItem) {
+    this.save.emit(mediItem);
   }
 }

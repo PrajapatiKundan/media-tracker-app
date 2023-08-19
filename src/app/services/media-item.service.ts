@@ -40,8 +40,14 @@ export class MediaItemService {
 
   putRequest(mediaItem: MediaItem) {
     return this.http
-      .put(`${this.ROOT_URL}/mediaitems/update`, MediaItemToServerMediaItem(mediaItem))
-      .pipe(catchError(this.errorHandler));
+      .put<ServerMediaItem>(`${this.ROOT_URL}/mediaitems/update`, MediaItemToServerMediaItem(mediaItem))
+      .pipe(
+        map((response) => {
+          console.log("Response: ", response)
+          return response;
+        }),
+        catchError(this.errorHandler)
+      );
   }
 
   errorHandler(error: HttpErrorResponse) {

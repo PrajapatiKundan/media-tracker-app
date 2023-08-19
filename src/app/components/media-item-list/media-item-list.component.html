@@ -13,7 +13,7 @@
 
 <section>
   <mw-media-item
-    *ngFor="let mediaItem of mediaItems | filter: searchText"
+    *ngFor="let mediaItem of mediaItems | filter : searchText"
     [mediaItem]="mediaItem"
     [searchText]="searchText"
     (delete)="onRemoveMediaItem($event)"
